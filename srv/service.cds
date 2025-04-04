@@ -5,7 +5,8 @@ service EmbeddingStorageService {
     entity Books                            as
         projection on db.Books
         excluding {
-            embedding
+            embedding,
+            embedding_openai
         };
 
     entity Search(query : String) as
@@ -27,7 +28,9 @@ service EmbeddingStorageService {
                         :query, 'QUERY', 'SAP_NEB.20240715'
                     )
                 )
-            ) as l2distance : String, 
+            ) as l2distance : String,
+            0.0 as cosine_similarity_openai : String,
+            0.0 as l2distance_openai : String
         }
         order by
             cosine_similarity desc

@@ -9,4 +9,5 @@ entity Books : managed {
         embedding : Vector = VECTOR_EMBEDDING(
             descr, 'DOCUMENT', 'SAP_NEB.20240715'
         ) stored;
+        embedding_openai : Vector;
 }
