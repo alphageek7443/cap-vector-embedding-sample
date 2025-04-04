@@ -14,7 +14,6 @@ service EmbeddingStorageService {
             ID,
             title,
             CONCAT(SUBSTRING(descr,0, 50),'...') as description,
-            :query as query : String,
             cosine_similarity(
                 embedding, to_real_vector(
                     vector_embedding(
