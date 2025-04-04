@@ -1,0 +1,17 @@
+@server = http://localhost:4004/odata/v4/embedding-storage
+
+### post books
+# @name post_book
+POST {{server}}/Books
+Content-Type: application/json
+
+{
+    "ID":252,
+    "title":"Eleonora",
+    "descr":"\"Eleonora\" is a short story by Edgar Allan Poe, first published in 1842 in Philadelphia in the literary annual The Gift. It is often regarded as somewhat autobiographical and has a relatively \"happy\" ending."
+}
+
+### Similarity Search
+# @name similarity_search
+@query = Catweazle British
+GET {{server}}/Search(query='{{query}}')/Set
