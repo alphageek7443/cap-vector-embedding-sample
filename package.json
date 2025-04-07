@@ -7,8 +7,11 @@
   "private": true,
   "dependencies": {
     "@cap-js/hana": "^1",
+    "@sap-cloud-sdk/http-client": "^3.26.4",
+    "@sap-cloud-sdk/resilience": "^3.26.4",
     "@sap/cds": "^8",
     "@sap/hana-client": "^2.24.21",
+    "cap-llm-plugin": "^1.5.0",
     "express": "^4"
   },
   "devDependencies": {

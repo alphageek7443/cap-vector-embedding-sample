@@ -13,7 +13,7 @@ service EmbeddingStorageService {
         select from db.Books {
             ID,
             title,
-            CONCAT(SUBSTRING(descr,0, 50),'...') as description,
+            descr,
             cosine_similarity(
                 embedding, to_real_vector(
                     vector_embedding(

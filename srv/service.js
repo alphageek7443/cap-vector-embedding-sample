@@ -11,16 +11,16 @@ module.exports = class EmbeddingStorageService extends cds.ApplicationService { 
     });
   })
  
-  this.after ('READ', Search, async (search,req) => {
-    const [{ searchWord: searchWord }] = search;
+  this.after ('READ', Search, async (searches,req) => {
+    const [{ query: query }] = req.params;
 
-    const scores = await this.getSimilaritySearch(searchWord);
-    search.map((note) => {
-      const score = scores.find((score) => score.ID === note.ID);
-      note.cosine_similarity_openai = score.cosine_similarity_openai;
-      note.l2distance_openai = score.l2distance_openai;
+    const scores = await this.getSimilaritySearch(query);
+    searches.map((search) => {
+      const score = scores.find((score) => score.ID === search.ID);
+      search.cosine_similarity_openai = score.cosine_similarity_openai;
+      search.l2distance_openai = score.l2distance_openai;
     });
-    return search;
+    return searches;
   })
 
 
